@@ -112,7 +112,7 @@ select a.id,
 -- Calculate the percent correct between the actual and predicted values from
 -- the test table.
 
-with incorrect_count (num_incorrect) as
+with different_count (num_different) as
        (select count(*)
         from iris a, iris_result b
         where a.id = b.id and a.class_name <> b.class),
@@ -120,9 +120,9 @@ with incorrect_count (num_incorrect) as
        (select count(*)
         from iris_test)
 select total_rows,
-       num_incorrect,
-       (num_incorrect * 100 / total_rows) as percent_incorrect
-  from incorrect_count,
+       num_different,
+       (num_different * 100 / total_rows) as percent_different
+  from different_count,
        total_count;
 
 -- Calculate and show the confusion matrix.
