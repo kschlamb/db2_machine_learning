@@ -1,0 +1,240 @@
+drop table iris_train
+DB20000I  The SQL command completed successfully.
+
+drop table iris_test
+DB20000I  The SQL command completed successfully.
+
+drop table iris_result
+DB21034E  The command was processed as an SQL statement because it was not a 
+valid Command Line Processor command.  During SQL processing it returned:
+SQL0204N  "DB2INST1.IRIS_RESULT" is an undefined name.  SQLSTATE=42704
+
+drop table iris_cmatrix
+DB21034E  The command was processed as an SQL statement because it was not a 
+valid Command Line Processor command.  During SQL processing it returned:
+SQL0204N  "DB2INST1.IRIS_CMATRIX" is an undefined name.  SQLSTATE=42704
+
+call idax.drop_model('model=IRIS_NAIVEBAYES_MODEL')
+SQL0438N  Application raised error or warning with diagnostic text: 
+"CDFAA0865E The model "DB2INST1"."IRIS_NAIVEBAYES_MODEL" does not exist".  
+SQLSTATE=38A00
+
+call idax.summary1000 ( 'intable=iris, outtable=iris_summary' )
+
+
+  Result set 1
+  --------------
+
+  NUMROWS    
+  -----------
+            6
+
+  1 record(s) selected.
+
+  Return Status = 0
+
+select * from iris_summary
+
+COLUMNNAME                                                                                                                       DISTINCTVALUES       MOSTFREQUENTVALUE                                                                                                                MOSTFREQUENTCASES    AVERAGE                                  VARIANCE                 STDDEV                                   SKEWNESS                 KURTOSIS                 MINIMUM                                  MAXIMUM                                  NONMISSINGCASES      MISSING             
+-------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------- ---------------------------------------- ------------------------ ---------------------------------------- ------------------------ ------------------------ ---------------------------------------- ---------------------------------------- -------------------- --------------------
+ID                                                                                                                                                  - -                                                                                                                                                   - 7.55E1                                     +1.88750000000000E+003 4.34453679924569E1                         -1.41964482167806E-015   -1.21210596026490E+000 1.0E0                                    1.5E2                                                     150                    0
+PETAL_LENGTH                                                                                                                                        - -                                                                                                                                                   - 3.75866666666667E0                         +3.11317941834452E+000 1.76442041995226E0                         -2.70804729107458E-001   -1.40605690679211E+000 1.0E0                                    6.9E0                                                     150                    0
+PETAL_WIDTH                                                                                                                                         - -                                                                                                                                                   - 1.19866666666667E0                         +5.82414317673378E-001 7.63160741700841E-1                        -1.03596607982206E-001   -1.34634400650365E+000 1.0E-1                                   2.5E0                                                     150                    0
+SEPAL_LENGTH                                                                                                                                        - -                                                                                                                                                   - 5.84333333333333E0                         +6.85693512304251E-001 8.28066127977863E-1                        +3.10712143882673E-001   -5.89744162604638E-001 4.3E0                                    7.9E0                                                     150                    0
+SEPAL_WIDTH                                                                                                                                         - -                                                                                                                                                   - 3.054E0                                    +1.88004026845638E-001 4.33594311362174E-1                        +3.29598626677482E-001   +2.19833677371845E-001 2.0E0                                    4.4E0                                                     150                    0
+CLASS_NAME                                                                                                                                          3 setosa                                                                                                                                             50 -                                                               - -                                                               -                        - -                                        -                                                         150                    0
+
+  6 record(s) selected.
+
+
+select * from iris_summary_num
+
+COLUMNNAME                                                                                                                       COLUMNID    COUNTT               AVERAGE                  VARIANCE                 STDDEV                   SKEWNESS                 KURTOSIS                 MINIMUM                  MAXIMUM                  MISSING             
+-------------------------------------------------------------------------------------------------------------------------------- ----------- -------------------- ------------------------ ------------------------ ------------------------ ------------------------ ------------------------ ------------------------ ------------------------ --------------------
+ID                                                                                                                                         1                  150   +7.55000000000000E+001   +1.88750000000000E+003   +4.34453679924569E+001   -1.41964482167806E-015   -1.21210596026490E+000   +1.00000000000000E+000   +1.50000000000000E+002                    0
+PETAL_LENGTH                                                                                                                               2                  150   +3.75866666666667E+000   +3.11317941834452E+000   +1.76442041995226E+000   -2.70804729107458E-001   -1.40605690679211E+000   +1.00000000000000E+000   +6.90000000000000E+000                    0
+PETAL_WIDTH                                                                                                                                3                  150   +1.19866666666667E+000   +5.82414317673378E-001   +7.63160741700841E-001   -1.03596607982206E-001   -1.34634400650365E+000   +1.00000000000000E-001   +2.50000000000000E+000                    0
+SEPAL_LENGTH                                                                                                                               4                  150   +5.84333333333333E+000   +6.85693512304251E-001   +8.28066127977863E-001   +3.10712143882673E-001   -5.89744162604638E-001   +4.30000000000000E+000   +7.90000000000000E+000                    0
+SEPAL_WIDTH                                                                                                                                5                  150   +3.05400000000000E+000   +1.88004026845638E-001   +4.33594311362174E-001   +3.29598626677482E-001   +2.19833677371845E-001   +2.00000000000000E+000   +4.40000000000000E+000                    0
+
+  5 record(s) selected.
+
+
+select * from iris_summary_char
+
+COLNAME                                                                                                                          DISTINCTVALUES       MOSTFREQUENTVALUE                                                                                                                MOSTFREQUENTCASES    NONMISSINGCASES      MISSING             
+-------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------- --------------------
+CLASS_NAME                                                                                                                                          3 setosa                                                                                                                                             50                  150                    0
+
+  1 record(s) selected.
+
+
+call idax.drop_summary1000('intable=iris_summary')
+
+
+  Result set 1
+  --------------
+
+  NUMTABLES  
+  -----------
+            3
+
+  1 record(s) selected.
+
+  Return Status = 0
+
+call idax.split_data ( 'intable=IRIS, traintable=IRIS_TRAIN, testtable=IRIS_TEST, id=ID, fraction=0.95' )
+
+
+  Result set 1
+  --------------
+
+  NUMROWS    
+  -----------
+          143
+
+  1 record(s) selected.
+
+  Return Status = 0
+
+select count(*) from iris
+
+1          
+-----------
+        150
+
+  1 record(s) selected.
+
+
+select count(*) from iris_train
+
+1          
+-----------
+        143
+
+  1 record(s) selected.
+
+
+select count(*) from iris_test
+
+1          
+-----------
+          7
+
+  1 record(s) selected.
+
+
+call idax.naivebayes ( 'model=IRIS_NAIVEBAYES_MODEL, intable=IRIS_TRAIN, id=ID, target=CLASS_NAME, disc=ew, bins=20' )
+
+
+  Result set 1
+  --------------
+
+  MODELSIZE  
+  -----------
+          228
+
+  1 record(s) selected.
+
+  Return Status = 0
+
+call idax.print_model('model=IRIS_NAIVEBAYES_MODEL')
+
+
+  Result set 1
+  --------------
+
+  CLASS_NAME             setosa     versicolor virginica 
+  ---------------------- ---------- ---------- ----------
+  A-priori probabilities     .34265     .33566     .32167
+
+  1 record(s) selected.
+
+  Return Status = 0
+
+call idax.predict_naivebayes( 'model=IRIS_NAIVEBAYES_MODEL, intable=IRIS_TEST, id=ID, mestimation=TRUE, outtable=IRIS_RESULT' )
+
+
+  Result set 1
+  --------------
+
+  NUMRECORDS 
+  -----------
+            7
+
+  1 record(s) selected.
+
+  Return Status = 0
+
+select count(*) from iris_result
+
+1          
+-----------
+          7
+
+  1 record(s) selected.
+
+
+select * from iris_result order by id fetch first 5 rows only
+
+ID          CLASS     
+----------- ----------
+         18 setosa    
+         51 versicolor
+         76 versicolor
+        127 virginica 
+        134 versicolor
+
+  5 record(s) selected.
+
+
+select a.id, a.class_name as actual, b.class as predicted from iris a, iris_result b where a.id = b.id order by a.id
+
+ID          ACTUAL     PREDICTED 
+----------- ---------- ----------
+         18 setosa     setosa    
+         51 versicolor versicolor
+         76 versicolor versicolor
+        127 virginica  virginica 
+        134 virginica  versicolor
+        136 virginica  virginica 
+        146 virginica  virginica 
+
+  7 record(s) selected.
+
+
+with different_count (num_different) as (select count(*) from iris a, iris_result b where a.id = b.id and a.class_name <> b.class), total_count (total_rows) as (select count(*) from iris_test) select total_rows, num_different, (num_different * 100 / total_rows) as percent_different from different_count, total_count
+
+TOTAL_ROWS  NUM_DIFFERENT PERCENT_DIFFERENT
+----------- ------------- -----------------
+          7             1                14
+
+  1 record(s) selected.
+
+
+call idax.confusion_matrix ( 'intable=IRIS_TEST, id=ID, target=CLASS_NAME, resulttable=IRIS_RESULT, resultID=ID, resulttarget=CLASS, matrixTable=IRIS_CMATRIX' )
+
+
+  Result set 1
+  --------------
+
+  NUMROWS    
+  -----------
+            4
+
+  1 record(s) selected.
+
+  Return Status = 0
+
+select * from iris_cmatrix
+
+REAL       PREDICTION CNT        
+---------- ---------- -----------
+setosa     setosa               1
+versicolor versicolor           2
+virginica  versicolor           1
+virginica  virginica            3
+
+  4 record(s) selected.
+
+
