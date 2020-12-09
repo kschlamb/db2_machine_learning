@@ -9,3 +9,5 @@ Scripts and code related to the use of machine learning with Db2 11.5 for Linux,
 - **Db2_ML-Decision_Tree-IRIS:** Uses Db2's built-in ML procedures to train a decision tree model and use it for scoring.
 - **Db2_ML-Decision_Tree-TITANIC:** Uses Db2's built-in ML procedures to train a decision tree model and use it for scoring. Also calculates accuracy, precision, and recall.
 - **Db2_ML-Naive_Bayes-IRIS:** Uses Db2's built-in ML procedures to train a Naive Bayes classifier and use it for scoring.
+
+Db2 integration with **H2O Driverless AI** (e.g. in-database scoring with Python MOJO and standalone scoring pipelines) can be found here: https://github.com/kschlamb/h2o_driverless_ai.
