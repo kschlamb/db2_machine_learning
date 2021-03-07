@@ -1,9 +1,10 @@
-# db2_machine-learning
+# db2_machine_learning
 Scripts and code related to the use of machine learning with Db2 11.5 for Linux, UNIX, and Windows. This includes Db2's built-in ML capabilities as well as integration with 3rd party applications.
 
 **Samples:**
 - **Sample_Db2_Python_UDFs:** Sample Db2 Python UDFs. Not necessarily ML-related.
 - **PythonUDF-PreBuiltModel-IRIS:** Loads an exported scikit-learn decision tree model into a Db2 Python UDF.
+- **PythonUDF-PreBuiltModel-IRIS-with-Trigger:** Creates a Db2 Python UDF with an existing scikit-learn model. Uses a trigger to perform automatic inferencing when new data inserted into a table.
 - **Db2_ML-Linear_Reg-CRICKET_CHIRPS:** Uses Db2's built-in ML procedures to train a linear regression model and use it for scoring. Includes MAE/MSE evaluation.
 - **Db2_ML-Linear_Reg-ABALONE:** Uses Db2's built-in ML procedures to train a linear regression model and use it for scoring. Includes MAE/MSE evaluation.
 - **Db2_ML-Decision_Tree-IRIS:** Uses Db2's built-in ML procedures to train a decision tree model and use it for scoring.

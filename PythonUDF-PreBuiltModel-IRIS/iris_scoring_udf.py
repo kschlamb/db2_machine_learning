@@ -6,12 +6,12 @@ class predict_iris(nzae.Ae):
 
     # As part of initialization, load the saved model.
     def _setup(self):
-        self.model = load('/home/db2inst1/db2_machine-learning/PythonUDF-PreBuiltModel-IRIS/iris_decision_tree_model.bin')
+        self.model = load('/home/db2inst1/db2_machine_learning/PythonUDF-PreBuiltModel-IRIS/iris_decision_tree_model.bin')
 
     # Main function for the Db2 UDF.
     def _getFunctionResult(self, row):
 
-        # The input row is provided as a list (e.g. [1.0, 2.0, 3.0, 4.0],
+        # The input row is provided as a list (e.g. [1.0, 2.0, 3.0, 4.0]),
         # which needs to be converted into a 2D array before calling the
         # model's prediction function.
         #

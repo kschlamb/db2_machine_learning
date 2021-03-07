@@ -7,4 +7,4 @@ create or replace function add_udf(integer, integer)
   fenced
   returns null on null input
   no sql
-  external name '/home/db2inst1/db2_machine-learning/Sample_Db2_Python_UDFs/add/add_udf.py';
+  external name '/home/db2inst1/db2_machine_learning/Sample_Db2_Python_UDFs/add/add_udf.py';

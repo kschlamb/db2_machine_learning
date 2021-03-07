@@ -8,4 +8,4 @@ CREATE OR REPLACE FUNCTION MULTIPLY_UDF(INT, INT)
   ALLOW PARALLEL
   NO EXTERNAL ACTION
   NO SQL
-  EXTERNAL NAME '/home/db2inst1/db2_machine-learning/Sample_Db2_Python_UDFs/multiply/multiply_udf.py';
+  EXTERNAL NAME '/home/db2inst1/db2_machine_learning/Sample_Db2_Python_UDFs/multiply/multiply_udf.py';

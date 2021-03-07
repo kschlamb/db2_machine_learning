@@ -1,4 +1,4 @@
--- Run command: db2 -tvf call_predict_udf.sh
+-- Run command: db2 -tvf call_predict_udf.sql
 
 CONNECT TO TESTDB;
 
