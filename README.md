@@ -2,6 +2,7 @@
 Scripts and code related to the use of machine learning with Db2 11.5 for Linux, UNIX, and Windows. This includes Db2's built-in ML capabilities as well as integration with 3rd party applications.
 
 **Samples:**
+- **AutoAI:** Samples related to IBM Watson Studio's AutoAI feature.
 - **Sample_Db2_Python_UDFs:** Sample Db2 Python UDFs. Not necessarily ML-related.
 - **PythonUDF-PreBuiltModel-IRIS:** Loads an exported scikit-learn decision tree model into a Db2 Python UDF.
 - **PythonUDF-PreBuiltModel-IRIS-with-Trigger:** Creates a Db2 Python UDF with an existing scikit-learn model. Uses a trigger to perform automatic inferencing when new data inserted into a table.
