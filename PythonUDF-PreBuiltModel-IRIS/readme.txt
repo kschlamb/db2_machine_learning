@@ -16,9 +16,10 @@ they are.
 
 The file "iris_decision_tree_model.bin" contains a simple decision
 tree model built using Scikit-learn (using a Jupyter Notebook on
-Windows 10). The model was exported (persisted to disk) using the
-dump command from the joblib package:
+Windows 10). The model and target names were exported to disk using
+the dump method from the joblib package:
 
-   dump(tree_model, 'iris_decision_tree_model.py')
+   dump(tree_model, 'iris_decision_tree_model.bin')
+   dump(iris.target_names, 'iris_decision_tree_model.bin')
 
 ======================================================================
